@@ -8,6 +8,7 @@ import 'package:joshesapp/pages/loadingscreen.dart';
 import 'package:joshesapp/pages/scrapbook.dart';
 
 import 'homepage.dart';
+import 'newaddnew.dart';
 import 'newandfinalhome.dart';
 
 
@@ -117,7 +118,8 @@ class _StartState extends State<start> {
       scrap(),
       addnew(onPageChange: changePage, updateDates: updatesdates,),
       betterhome(Date: Date,),
-      loadingwait()
+      loadingwait(),
+      addnewer(onPageChange: changePage, updateDates: updatesdates,)
     ];
 
     return Scaffold(
@@ -181,7 +183,7 @@ class _StartState extends State<start> {
             ),
           InkWell(
             onTap: () {
-              changePage(1);
+              changePage(5);
               setState(() {
                 ishome = false;
                 isplan = false;
