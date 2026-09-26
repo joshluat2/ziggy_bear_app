@@ -29,6 +29,7 @@ class _StartState extends State<start> {
   void initState() {
     super.initState();
     loadQuestions();
+    loadQoutes();
 
 
 
@@ -99,6 +100,26 @@ class _StartState extends State<start> {
 
   }
 
+  List<Map<String, dynamic>> Qoutes = [];
+  List<String> coolqotue = [];
+
+  loadQoutes() async {
+
+
+    final snapshot = await FirebaseFirestore.instance
+        .collection("qoutes")
+        .get();
+
+
+
+
+    for (var doc in snapshot.docs) {
+      final data = doc.data() as Map<String, dynamic>;
+      Qoutes.add(data);
+      print(Qoutes[0]['AQOUTE']);
+    }
+  }
+
 
 
 
@@ -115,7 +136,7 @@ class _StartState extends State<start> {
 
     late final List <Widget>pages = [
       finalhome(Date: Date, updateDates: updatesdates,),
-      scrap(),
+      scrap(qoutes: Qoutes),
       addnew(onPageChange: changePage, updateDates: updatesdates,),
       betterhome(Date: Date,),
       loadingwait(),
@@ -160,7 +181,7 @@ class _StartState extends State<start> {
             ),
             InkWell(
                 onTap: () {
-                  changePage(2);
+                  changePage(5);
                   setState(() {
                     ishome = false;
                     isplan = true;
@@ -183,7 +204,7 @@ class _StartState extends State<start> {
             ),
           InkWell(
             onTap: () {
-              changePage(5);
+              changePage(1);
               setState(() {
                 ishome = false;
                 isplan = false;

@@ -99,7 +99,7 @@ class _thridState extends State<thrid> {
                                 fit: BoxFit.cover)
                         ),
                         child: Container(
-                          margin: EdgeInsets.only(left: 50, right: 50),
+                          margin: EdgeInsets.only(left: 50, right: 50, top: 11),
                           child:Text("${widget.qoute}",
                             textAlign: TextAlign.center,
                             softWrap: true,

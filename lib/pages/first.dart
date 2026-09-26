@@ -153,6 +153,7 @@ class _firstState extends State<first> {
                       child: Align(
               alignment: Alignment.centerRight,
                 child: Container(
+
                   width: 250,
                   height: 250,
                   decoration: BoxDecoration(
@@ -160,13 +161,13 @@ class _firstState extends State<first> {
                     fit: BoxFit.cover)
                   ),
                   child: Container(
-                    margin: EdgeInsets.only(left: 50, right: 50),
+                    margin: EdgeInsets.only(left: 50, right: 50, top: 13),
                     child:Text("${widget.qoute1}",
                     textAlign: TextAlign.center,
                     softWrap: true,
                     maxLines: 7,
                     style: GoogleFonts.getFont('Pacifico',
-                    fontSize: 18,
+                    fontSize: 16,
                     color: Colors.black,
                     fontWeight: FontWeight.w100
 
@@ -207,7 +208,7 @@ class _firstState extends State<first> {
                                     softWrap: true,
                                     maxLines: 7,
                                     style: GoogleFonts.getFont('Pacifico',
-                                        fontSize: 18,
+                                        fontSize: 16,
                                         color: Colors.black,
                                         fontWeight: FontWeight.w100
 

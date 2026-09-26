@@ -84,6 +84,30 @@ class _addnewerState extends State<addnewer> {
 
   }
 
+  Future addqoute() async{
+    if(_lovecontroller == ""){
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("enter some data")),
+      );
+
+    }
+    else {
+      await FirebaseFirestore.instance.collection('qoutes').add({
+        'AQOUTE': _lovecontroller.text.trim()
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Sucessfully entered")),
+      );
+
+      widget.onPageChange(0);
+
+    }
+
+
+
+
+  }
+
   late Size size = MediaQuery.sizeOf(context);
 
   late List<Widget> cars=[
@@ -339,6 +363,26 @@ class _addnewerState extends State<addnewer> {
     ),
     child: Column(
     children: [
+      SizedBox(height: 55,),
+      Align(
+          alignment: Alignment.center,
+          child: Container(
+            width: 0.45 * size.width,
+            height: 70,
+            decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.3),
+
+                borderRadius: BorderRadius.circular(40)
+            ),
+            child: Text("Add a new date",textAlign: TextAlign.center,
+              style: GoogleFonts.getFont('Pacifico',
+                  fontSize: 20,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w100
+
+              ),),
+          )
+      ),
     SizedBox(height: 55,),
 
     Align(
@@ -465,7 +509,7 @@ class _addnewerState extends State<addnewer> {
       height: 0.50 * size.height,
       margin: EdgeInsets.symmetric(horizontal: 5),
       decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage("assets/images/mapbackground.png",
+          image: DecorationImage(image: AssetImage("assets/images/prettybackground.jpg",
           ),
               fit: BoxFit.cover
           ),
@@ -474,6 +518,26 @@ class _addnewerState extends State<addnewer> {
       ),
       child: Column(
         children: [
+          SizedBox(height: 55,),
+          Align(
+              alignment: Alignment.center,
+              child: Container(
+                width: 0.45 * size.width,
+                height: 70,
+                decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.3),
+
+                    borderRadius: BorderRadius.circular(40)
+                ),
+                child: Text("Add some qoutes",textAlign: TextAlign.center,
+                  style: GoogleFonts.getFont('Pacifico',
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w100
+
+                  ),),
+              )
+          ),
           SizedBox(height: 55,),
 
           Align(
@@ -488,7 +552,7 @@ class _addnewerState extends State<addnewer> {
                       color: Colors.black,
                       fontWeight: FontWeight.w100
                   ),
-                  controller: _namecontroller,
+                  controller: _lovecontroller,
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 18),
                     enabledBorder: OutlineInputBorder(
@@ -497,7 +561,7 @@ class _addnewerState extends State<addnewer> {
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(40),
                     ),
-                    hintText: 'date name',
+                    hintText: 'new qoutes',
                     hintStyle:
                     GoogleFonts.getFont('Pacifico',
                         fontSize: 15,
@@ -517,6 +581,8 @@ class _addnewerState extends State<addnewer> {
               alignment: Alignment.center,
               child:InkWell(
                   onTap: () {
+
+                    addqoute();
 
 
                   },
